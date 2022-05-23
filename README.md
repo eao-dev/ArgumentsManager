@@ -8,7 +8,7 @@ Allows registration of required arguments, sets of required arguments, help argu
 
 See [examples](https://github.com/eao-dev/ArgumentsManager/tree/dev/examples).
 
-# Doucmentnation
+# Documentnation
 
 See 'docs' directory.
 
