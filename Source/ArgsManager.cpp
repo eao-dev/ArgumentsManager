@@ -1,29 +1,25 @@
 #include "ArgsManager.h"
 
-ParameterContent ArgsManager::getContentForParam(const Parameter& parameter,
+ArgContent ArgsManager::getContentForArg(const Argument& arg,
 	const unsigned int argc, const unsigned int idx, const char* const argv[]) const
 {
 	const char* const nextParam = argv[idx + 1];
 
 	// Extract content
 	if ((idx == (argc - 1)) || nextParam == nullptr || nextParam[0] == '-' || nextParam[0] == '\0') {
-		const auto& p2 = parameter.getParamName2();
+		const auto& p2 = arg.getArg2();
 		std::string exceptionMessage;
 			
 		exceptionMessage
-			.append("Parameter '")
-			.append(parameter.getParamName1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
+			.append("Argument '")
+			.append(arg.getArg1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
 			.append(" not found!");
 
-		throw InvalidParameter(exceptionMessage);
+		throw InvalidArg(exceptionMessage);
 	}
 	return nextParam;
 }
 
-/*
- * Returns instance of this class.
- *
- */
 ArgsManager& ArgsManager::getInstance()
 {
 	static ArgsManager argsManager;
@@ -34,48 +30,45 @@ ArgsManager::~ArgsManager()
 {
 }
 
-void ArgsManager::addHelpParam(const std::unordered_set<std::string>& helpParams)
+ArgsManager& ArgsManager::addHelp(const std::string& helpParam)
 {
-	this->helpParams = helpParams;
+	helpArgs.insert(helpParam);
+	return *this;
 }
 
-void ArgsManager::addRequiredParam(const Parameter& requredParameter)
+ArgsManager& ArgsManager::addRequired(const Argument& requredArg)
 {
-	requiredParams.insert(requredParameter);
+	requiredArgs.insert(requredArg);
+	return *this;
 }
 
-void ArgsManager::addOptionalParam(const Parameter& optionalParameter)
+ArgsManager& ArgsManager::addOptional(const Argument& optionalParameter)
 {
-	this->optionalParameter.insert(optionalParameter);
+	this->optionalArgs.insert(optionalParameter);
+	return *this;
 }
 
-void ArgsManager::setRequiredParamSet(const std::unordered_set<Parameter>& paramSet)
+ArgsManager& ArgsManager::addRequiredToSet(const Argument& arg)
 {
-	requiredParamSet.insert(paramSet.begin(), paramSet.end());
-}
-
-void ArgsManager::setDepenentParams(const Parameter & requredParameter, const std::unordered_set<Parameter>& paramSet)
-{
-	// TODO: implement this method
-	throw std::runtime_error("Method (setDepenentParams) not implemented");
+	requiredArgSet.insert(arg);
+	return *this;
 }
 
 void ArgsManager::clearAllParams()
 {
-	requiredParams.clear();
-	requiredParamSet.clear();
-	optionalParameter.clear();
+	requiredArgs.clear();
+	requiredArgSet.clear();
+	optionalArgs.clear();
 }
 
-ParamContentMap ArgsManager::parse(const unsigned int argc, const char * const argv[], unsigned int beginIdx = 0) const
+ArgContentMap ArgsManager::parse(const unsigned int argc, const char * const argv[], unsigned int beginIdx = 0) const
 {
-	// TODO: added support only optional arguments
-	// TODO: added the ability to display a compile list of missing arguments
+	// TODO: add support only optional arguments
 
 	if (argc == 0)
-		throw InvalidParameter("Does not pass a list of arguments.");
+		throw InvalidArg("Does not pass a list of arguments.");
 
-	if (beginIdx > (argc))
+	if (beginIdx > argc)
 		throw std::invalid_argument("Start index out of bounds.");
 
 	if (argv == nullptr)
@@ -83,60 +76,60 @@ ParamContentMap ArgsManager::parse(const unsigned int argc, const char * const a
 
 	std::string exceptionMessage;
 
-	ParamContentMap 
+	ArgContentMap 
 		  requiredParamContentMap
 		, requiredSetParamContentMap
 		, optionalParamContentMap
 		, out;
 
 	// Required parameters
-	for (const auto& requiredParam : requiredParams) {
+	for (const auto& requiredParam : requiredArgs) {
 		bool paramFound = false;
 
 		for (unsigned int idx = beginIdx; idx < argc; ++idx) {
 			const char* const paramStr = argv[idx];
 
 			if (paramStr == nullptr)
-				throw std::runtime_error("Parameter " + std::to_string(idx + 1) + " is NULL");
+				throw std::runtime_error("Argument " + std::to_string(idx + 1) + " is NULL");
 			
 			if (requiredParam == paramStr) {
 
-				ParameterContent parameterContent;
+				ArgContent parameterContent;
 
 				if (requiredParam.hasContent()) 
-					parameterContent = getContentForParam(requiredParam, argc, idx, argv);
+					parameterContent = getContentForArg(requiredParam, argc, idx, argv);
 
-				requiredParamContentMap.insert(std::pair<Parameter, ParameterContent>(requiredParam, parameterContent));
+				requiredParamContentMap.insert(std::pair<Argument, ArgContent>(requiredParam, parameterContent));
 				paramFound = true;
 				break;
 			}
 		}
 
 		if (!paramFound) {
-			const auto& p2 = requiredParam.getParamName2();
+			const auto& p2 = requiredParam.getArg2();
 			exceptionMessage
 				.append("Parameter '")
-				.append(requiredParam.getParamName1() + ((!p2.empty()) ? "' / '" + p2 + "'":"'"))
+				.append(requiredParam.getArg1() + ((!p2.empty()) ? "' / '" + p2 + "'":"'"))
 				.append(" not found!");
 			goto NOT_FOUND_EXCEPTION;
 		}
 	}
 
 	// Required parameters set
-	if (!requiredParamSet.empty()) {
+	if (!requiredArgSet.empty()) {
 		for (unsigned int idx = beginIdx; idx < argc; ++idx) {
 
 			const char* const paramStr = argv[idx];
 			if (paramStr == nullptr)
 				throw std::runtime_error("Parameter " + std::to_string(idx + 1) + " is NULL");
 
-			for (const auto& requiredParam : requiredParamSet) {
+			for (const auto& requiredParam : requiredArgSet) {
 				if (requiredParam == paramStr) {
-					ParameterContent parameterContent;
+					ArgContent parameterContent;
 					if (requiredParam.hasContent())
-						parameterContent = getContentForParam(requiredParam, argc, idx, argv);
+						parameterContent = getContentForArg(requiredParam, argc, idx, argv);
 
-					requiredSetParamContentMap.insert(std::pair<Parameter, ParameterContent>(requiredParam, parameterContent));
+					requiredSetParamContentMap.insert(std::pair<Argument, ArgContent>(requiredParam, parameterContent));
 					break;
 				}
 			}
@@ -144,26 +137,26 @@ ParamContentMap ArgsManager::parse(const unsigned int argc, const char * const a
 	}
 
 
-	if (!requiredParamSet.empty() && requiredSetParamContentMap.empty()) {
-		exceptionMessage = "Required paramter not found.";
+	if (!requiredArgSet.empty() && requiredSetParamContentMap.empty()) {
+		exceptionMessage = "Required argument not found.";
 		goto NOT_FOUND_EXCEPTION;
 	}
 
 	// Optional parameters set
-	if (!optionalParameter.empty()) {
+	if (!optionalArgs.empty()) {
 		for (unsigned int idx = beginIdx; idx < argc; ++idx) {
 
 			const char* const paramStr = argv[idx];
 			if (paramStr == nullptr)
-				throw std::runtime_error("Parameter " + std::to_string(idx + 1) + " is NULL");
+				throw std::runtime_error("Argument " + std::to_string(idx + 1) + " is NULL");
 
-			for (const auto& optionParam : optionalParameter) {
+			for (const auto& optionParam : optionalArgs) {
 				if (optionParam == paramStr) {
-					ParameterContent parameterContent;
+					ArgContent parameterContent;
 					if (optionParam.hasContent())
-						parameterContent = getContentForParam(optionParam, argc, idx, argv);
+						parameterContent = getContentForArg(optionParam, argc, idx, argv);
 
-					optionalParamContentMap.insert(std::pair<Parameter, ParameterContent>(optionParam, parameterContent));
+					optionalParamContentMap.insert(std::pair<Argument, ArgContent>(optionParam, parameterContent));
 					break;
 				}
 			}
@@ -179,27 +172,28 @@ ParamContentMap ArgsManager::parse(const unsigned int argc, const char * const a
 	return out;
 
 NOT_FOUND_EXCEPTION:
-	throw InvalidParameter(exceptionMessage);
+	throw InvalidArg(exceptionMessage);
 }
 
-ParameterContent ArgsManager::paramValue(const ParamContentMap & paramContentMap, const Parameter & param) const
+ArgContent ArgsManager::argValue(const ArgContentMap & paramContentMap, const Argument & param) const
 {
 	const auto& paramContentIter = paramContentMap.find(param);
 	
 	std::string exceptionMessage;
-	const auto& p2 = param.getParamName2();
+	const auto& p2 = param.getArg2();
+
 	if (paramContentIter == paramContentMap.end()) {
 		exceptionMessage
 			.append("Parameter '")
-			.append(param.getParamName1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
+			.append(param.getArg1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
 			.append(" not found!");
-		throw InvalidParameter(exceptionMessage);
+		throw InvalidArg(exceptionMessage);
 	}
 
 	if (!(*paramContentIter).first.hasContent()) {
 		exceptionMessage
 			.append("Parameter '")
-			.append(param.getParamName1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
+			.append(param.getArg1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
 			.append(" has no content!");
 		throw std::runtime_error(exceptionMessage);
 	}
@@ -208,10 +202,10 @@ ParameterContent ArgsManager::paramValue(const ParamContentMap & paramContentMap
 	return (*paramContentIter).second;
 }
 
-bool ArgsManager::isHelpParam(const unsigned int argc, const char * const argv[], unsigned int beginIdx) const
+bool ArgsManager::isHelpArg(const unsigned int argc, const char * const argv[], unsigned int beginIdx) const
 {
 	if (argc == 0)
-		throw InvalidParameter("Does not pass a list of arguments.");
+		throw InvalidArg("Does not pass a list of arguments.");
 
 	if (beginIdx > (argc))
 		throw std::invalid_argument("Start index out of bounds.");
@@ -220,7 +214,7 @@ bool ArgsManager::isHelpParam(const unsigned int argc, const char * const argv[]
 		throw std::invalid_argument("Pointer argv is NULL!");
 
 	for (unsigned int idx = beginIdx; idx < argc; ++idx) {
-		for (const auto& helpParamItem : helpParams) {
+		for (const auto& helpParamItem : helpArgs) {
 			if (helpParamItem == argv[idx])
 				return true;
 		}

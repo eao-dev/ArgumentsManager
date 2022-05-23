@@ -1,0 +1,220 @@
+\hypertarget{class_args_manager}{}\doxysection{Args\+Manager Class Reference}
+\label{class_args_manager}\index{ArgsManager@{ArgsManager}}
+
+
+Provides options for registering arguments, parsing them, validating them, extracting content.  
+
+
+
+
+{\ttfamily \#include $<$Args\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_args_manager_ab5ed5cac456e18db5a36a2fd36a90da7}\label{class_args_manager_ab5ed5cac456e18db5a36a2fd36a90da7}} 
+{\bfseries Args\+Manager} (const \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_args_manager_a0d3818ae57e239c5e2e5a00fc8c50a93}\label{class_args_manager_a0d3818ae57e239c5e2e5a00fc8c50a93}} 
+{\bfseries Args\+Manager} (const \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \&\&)=delete
+\item 
+\mbox{\Hypertarget{class_args_manager_ab0312e75386af3cca3c9972eb4885c70}\label{class_args_manager_ab0312e75386af3cca3c9972eb4885c70}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_args_manager_a62a6ce5a450a599be01f65017e319af5}\label{class_args_manager_a62a6ce5a450a599be01f65017e319af5}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \&\&)=delete
+\item 
+\mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& \mbox{\hyperlink{class_args_manager_acdaa5e3f3fbfe80e97523022a3fd9a5b}{add\+Help}} (const std\+::string \&help\+Param)
+\begin{DoxyCompactList}\small\item\em Add of options responsible for displaying help. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& \mbox{\hyperlink{class_args_manager_a7386104e045e9d0d37526228d44163d3}{add\+Required}} (const \mbox{\hyperlink{class_argument}{Argument}} \&arg)
+\begin{DoxyCompactList}\small\item\em Add required argument. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& \mbox{\hyperlink{class_args_manager_a659149fcafe74aab0867ac2f80ef51f5}{add\+Required\+To\+Set}} (const \mbox{\hyperlink{class_argument}{Argument}} \&arg)
+\begin{DoxyCompactList}\small\item\em Add a required argument. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& \mbox{\hyperlink{class_args_manager_ae14b7ca80496bb5387570ebfb6a32973}{add\+Optional}} (const \mbox{\hyperlink{class_argument}{Argument}} \&optional\+Arg)
+\begin{DoxyCompactList}\small\item\em Add an optional argument. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_args_manager_a44a1931034a806874f799e0433a9bd8d}\label{class_args_manager_a44a1931034a806874f799e0433a9bd8d}} 
+void {\bfseries clear\+All\+Params} ()
+\begin{DoxyCompactList}\small\item\em Clear the set of all argument. \end{DoxyCompactList}\item 
+Arg\+Content\+Map \mbox{\hyperlink{class_args_manager_aeb91ed486b3678d4e6f93bdde235a88b}{parse}} (const unsigned int argc, const char $\ast$const argv\mbox{[}$\,$\mbox{]}, unsigned int begin\+Idx) const
+\begin{DoxyCompactList}\small\item\em Performs parsing of passed arguments, validation of input arguments, and extraction of argument values. \end{DoxyCompactList}\item 
+Arg\+Content \mbox{\hyperlink{class_args_manager_a47392e08ceb87f2dbecca66a3888cdd7}{arg\+Value}} (const Arg\+Content\+Map \&arg\+Content\+Map, const \mbox{\hyperlink{class_argument}{Argument}} \&arg) const
+\begin{DoxyCompactList}\small\item\em Extract content from instance of Arg\+Content\+Map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_args_manager_a35139f78f834f57a0f4d1c4c1f064bea}{is\+Help\+Arg}} (const unsigned int argc, const char $\ast$const argv\mbox{[}$\,$\mbox{]}, unsigned int begin\+Idx) const
+\begin{DoxyCompactList}\small\item\em Checks if input parameters are parameters for outputting help. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& \mbox{\hyperlink{class_args_manager_ad46cc12245591f2ec750eed86973dfc5}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Returns an instance of this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides options for registering arguments, parsing them, validating them, extracting content. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_args_manager_acdaa5e3f3fbfe80e97523022a3fd9a5b}\label{class_args_manager_acdaa5e3f3fbfe80e97523022a3fd9a5b}} 
+\index{ArgsManager@{ArgsManager}!addHelp@{addHelp}}
+\index{addHelp@{addHelp}!ArgsManager@{ArgsManager}}
+\doxysubsubsection{\texorpdfstring{addHelp()}{addHelp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& Args\+Manager\+::add\+Help (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{help\+Param }\end{DoxyParamCaption})}
+
+
+
+Add of options responsible for displaying help. 
+
+\begin{DoxyReturn}{Returns}
+instance of this calss. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em help\+Param} & argument. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_args_manager_ae14b7ca80496bb5387570ebfb6a32973}\label{class_args_manager_ae14b7ca80496bb5387570ebfb6a32973}} 
+\index{ArgsManager@{ArgsManager}!addOptional@{addOptional}}
+\index{addOptional@{addOptional}!ArgsManager@{ArgsManager}}
+\doxysubsubsection{\texorpdfstring{addOptional()}{addOptional()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& Args\+Manager\+::add\+Optional (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_argument}{Argument}} \&}]{optional\+Arg }\end{DoxyParamCaption})}
+
+
+
+Add an optional argument. 
+
+\begin{DoxyReturn}{Returns}
+instance of this calss. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em optional\+Arg} & added optional argument. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_args_manager_a7386104e045e9d0d37526228d44163d3}\label{class_args_manager_a7386104e045e9d0d37526228d44163d3}} 
+\index{ArgsManager@{ArgsManager}!addRequired@{addRequired}}
+\index{addRequired@{addRequired}!ArgsManager@{ArgsManager}}
+\doxysubsubsection{\texorpdfstring{addRequired()}{addRequired()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& Args\+Manager\+::add\+Required (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_argument}{Argument}} \&}]{arg }\end{DoxyParamCaption})}
+
+
+
+Add required argument. 
+
+\begin{DoxyReturn}{Returns}
+instance of this calss. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & added required argument. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_args_manager_a659149fcafe74aab0867ac2f80ef51f5}\label{class_args_manager_a659149fcafe74aab0867ac2f80ef51f5}} 
+\index{ArgsManager@{ArgsManager}!addRequiredToSet@{addRequiredToSet}}
+\index{addRequiredToSet@{addRequiredToSet}!ArgsManager@{ArgsManager}}
+\doxysubsubsection{\texorpdfstring{addRequiredToSet()}{addRequiredToSet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& Args\+Manager\+::add\+Required\+To\+Set (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_argument}{Argument}} \&}]{arg }\end{DoxyParamCaption})}
+
+
+
+Add a required argument. 
+
+\begin{DoxyReturn}{Returns}
+instance of this calss. At least one argument added with this method must be passed. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & added required argument. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_args_manager_a47392e08ceb87f2dbecca66a3888cdd7}\label{class_args_manager_a47392e08ceb87f2dbecca66a3888cdd7}} 
+\index{ArgsManager@{ArgsManager}!argValue@{argValue}}
+\index{argValue@{argValue}!ArgsManager@{ArgsManager}}
+\doxysubsubsection{\texorpdfstring{argValue()}{argValue()}}
+{\footnotesize\ttfamily Arg\+Content Args\+Manager\+::arg\+Value (\begin{DoxyParamCaption}\item[{const Arg\+Content\+Map \&}]{arg\+Content\+Map,  }\item[{const \mbox{\hyperlink{class_argument}{Argument}} \&}]{arg }\end{DoxyParamCaption}) const}
+
+
+
+Extract content from instance of Arg\+Content\+Map. 
+
+\begin{DoxyReturn}{Returns}
+Instance of Arg\+Content, contains the conent for the specified argument. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em arg} & not found or has no content. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em arg\+Content\+Map} & set of options and content. \\
+\hline
+{\em arg} & argument for which the content should be retrieved. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_args_manager_ad46cc12245591f2ec750eed86973dfc5}\label{class_args_manager_ad46cc12245591f2ec750eed86973dfc5}} 
+\index{ArgsManager@{ArgsManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!ArgsManager@{ArgsManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& Args\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns an instance of this class. 
+
+\begin{DoxyReturn}{Returns}
+instance of this calss. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_args_manager_a35139f78f834f57a0f4d1c4c1f064bea}\label{class_args_manager_a35139f78f834f57a0f4d1c4c1f064bea}} 
+\index{ArgsManager@{ArgsManager}!isHelpArg@{isHelpArg}}
+\index{isHelpArg@{isHelpArg}!ArgsManager@{ArgsManager}}
+\doxysubsubsection{\texorpdfstring{isHelpArg()}{isHelpArg()}}
+{\footnotesize\ttfamily bool Args\+Manager\+::is\+Help\+Arg (\begin{DoxyParamCaption}\item[{const unsigned int}]{argc,  }\item[{const char $\ast$const}]{argv\mbox{[}$\,$\mbox{]},  }\item[{unsigned int}]{begin\+Idx }\end{DoxyParamCaption}) const}
+
+
+
+Checks if input parameters are parameters for outputting help. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if argv contains a help parameter, false otherwise. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em If} & argc == 0, begin\+Idx \texorpdfstring{$>$}{>} argc, argv is NULL pointer. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & count of arguments. \\
+\hline
+{\em argv} & arguments array. @begin\+Idx initial argument number. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_args_manager_aeb91ed486b3678d4e6f93bdde235a88b}\label{class_args_manager_aeb91ed486b3678d4e6f93bdde235a88b}} 
+\index{ArgsManager@{ArgsManager}!parse@{parse}}
+\index{parse@{parse}!ArgsManager@{ArgsManager}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily Arg\+Content\+Map Args\+Manager\+::parse (\begin{DoxyParamCaption}\item[{const unsigned int}]{argc,  }\item[{const char $\ast$const}]{argv\mbox{[}$\,$\mbox{]},  }\item[{unsigned int}]{begin\+Idx = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+
+
+Performs parsing of passed arguments, validation of input arguments, and extraction of argument values. 
+
+\begin{DoxyReturn}{Returns}
+Returns a structure containing the values associated with the arguments. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em If} & argc == 0, begin\+Idx \texorpdfstring{$>$}{>} argc, argv is NULL pointer. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & count of arguments. \\
+\hline
+{\em argv} & arguments array. @begin\+Idx initial argument number. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Args\+Manager.\+h\item 
+Args\+Manager.\+cpp\end{DoxyCompactItemize}

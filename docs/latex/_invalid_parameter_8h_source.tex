@@ -1,0 +1,16 @@
+\hypertarget{_invalid_parameter_8h_source}{}\doxysection{Invalid\+Parameter.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_invalid_arg}{InvalidArg}}: \textcolor{keyword}{public} std::exception}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     }
+\DoxyCodeLine{8 \textcolor{keyword}{public}:}
+\DoxyCodeLine{9     \mbox{\hyperlink{class_invalid_arg}{InvalidArg}}(\textcolor{keyword}{const} std::string\& errorMsg) : std::exception(errorMsg.c\_str()) \{\};}
+\DoxyCodeLine{10     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_invalid_arg}{\string~InvalidArg}}() \{\};}
+\DoxyCodeLine{11 \};}
+
+\end{DoxyCode}
