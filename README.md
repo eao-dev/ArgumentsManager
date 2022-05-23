@@ -4,9 +4,13 @@ A small C++ library for convenient management of command line arguments.
 
 Allows registration of required arguments, sets of required arguments, help arguments, optional arguments, performs parsing and validation.
 
-## Exaplmes
+# Exaplmes
 
 See [examples](https://github.com/eao-dev/ArgumentsManager/tree/dev/examples).
+
+# Doucmentnation
+
+See 'docs' directry.
 
 # Assembly
 
