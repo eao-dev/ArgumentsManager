@@ -10,7 +10,7 @@ See [examples](https://github.com/eao-dev/ArgumentsManager/tree/dev/examples).
 
 # Doucmentnation
 
-See 'docs' directry.
+See 'docs' directory.
 
 # Assembly
 
