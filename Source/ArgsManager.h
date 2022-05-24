@@ -18,6 +18,8 @@
 	To use the library, you need to copy it, add it to the project and include the ArgsManager.h file
 */
 
+// TODO: definition to separate file.
+// TODO: move implementation to CPP-file.
 /**
 	@brief
 	The class representing the argument.
@@ -28,15 +30,13 @@ class Argument {
 
 private:
 
-	const std::string arg1;
-	const std::string arg2;
+	std::string arg1;
+	std::string arg2;
 	static constexpr const char* emptyArgsErrorMsg = "Add argument cannot be empty!";
 	bool has_Content = false;
 
 public:
-
-	// TODO: add move semantics constructor.
-
+	
 	/**
 		@brief constructor.
 		@throw If arg1 is empty.
@@ -67,7 +67,7 @@ public:
 		@param arg1 argument (required).
 		@param arg2 argument (optional).
 	*/
-	Argument(bool hasContent, const std::string& arg1, const std::string& arg2 = std::string()):
+	Argument(bool hasContent, const std::string& arg1, const std::string& arg2 = std::string()) :
 		arg1(arg1), arg2(arg2), has_Content(hasContent) {
 		if (arg1.empty())
 			throw std::invalid_argument(emptyArgsErrorMsg);
@@ -79,8 +79,26 @@ public:
 		@param arg1 argument (required).
 		@param arg2 argument (optional).
 	*/
-	Argument(bool hasContent, std::string&& arg1, std::string&& arg2 = std::string()):
+	Argument(bool hasContent, std::string&& arg1, std::string&& arg2 = std::string()) :
 		arg1(std::move(arg1)), arg2(std::move(arg2)), has_Content(hasContent) {}
+
+
+	/**
+		@brief Move semantics constructor.
+	*/
+	Argument(Argument&& arg) noexcept {
+		*this = std::move(arg);
+	}
+
+	/**
+		@brief Move semantics operator=.
+	*/
+	Argument& operator=(Argument&& arg) noexcept {
+		arg1 = std::move(arg.arg1);
+		arg2 = std::move(arg.arg2);
+		has_Content = arg.has_Content;
+		arg.has_Content = false;
+	}
 
 	Argument(const Argument&) = default;
 	Argument& operator=(const Argument&) = default;
@@ -135,7 +153,7 @@ public:
 };
 
 namespace std {
-	template<> 
+	template<>
 	/**
 		Hash implementation for Argument
 	*/
@@ -149,8 +167,6 @@ namespace std {
 	};
 }
 
-class ArgsManager;
-
 using ArgContent = std::string;
 using ArgContentMap = std::unordered_map<Argument, ArgContent>;
 
@@ -163,16 +179,17 @@ class ArgsManager
 
 private:
 
-	ArgsManager() = default;	
+	ArgsManager() = default;
 	std::unordered_set<Argument>
-		  requiredArgs
+		requiredArgs
 		, optionalArgs
 		, requiredArgSet;
 
-	ArgContent getContentForArg(const Argument& argument, 
+	ArgContent getContent(const Argument& argument,
 		const unsigned int argc, const unsigned int idx, const char* const argv[]) const;
 
 	std::unordered_set<std::string> helpArgs;
+	bool parsed = false;
 
 public:
 	ArgsManager(const ArgsManager&) = delete;
@@ -211,7 +228,7 @@ public:
 
 	/**
 		@brief Add an optional argument.
-		@return instance of this calss.
+		@return Instance of this calss.
 		@param optionalArg added optional argument.
 	*/
 	ArgsManager& addOptional(const Argument& optionalArg);
@@ -219,29 +236,34 @@ public:
 	/**
 		@brief Clear the set of all argument.
 	*/
-	void clearAllParams();
+	void clear();
 
 	/**
 		@brief Performs parsing of passed arguments, validation of input arguments, and extraction of argument values.
-		@return Returns a structure containing the values associated with the arguments.
 		@throw If argc == 0, beginIdx > argc, argv is NULL pointer.
 		@param argc count of arguments.
 		@param argv arguments array.
-		@beginIdx   initial argument number.
+		@beginIdx   Initial argument number.
 	*/
-	ArgContentMap parse(const unsigned int argc, const char* const argv[], unsigned int beginIdx) const;
+	void parse(const unsigned int argc, const char* const argv[], unsigned int beginIdx);
 
 	/**
-		@brief Extract content from instance of ArgContentMap.
+		@brief Extract content from instance of ArgContentMap. Method parse() must be called before this method.
 		@return Instance of ArgContent, contains the conent for the specified argument.
-		@throw arg not found or has no content.
-		@param argContentMap set of options and content.
+		@throw arg Not found, has no content or method parse() was not called.
 		@param arg argument for which the content should be retrieved.
 	*/
-	ArgContent argValue(const ArgContentMap& argContentMap, const Argument& arg) const;
+	ArgContent argValue(const Argument& arg) const;
 
 	/**
-		@brief Checks if input parameters are parameters for outputting help.
+		@brief Checks if the argument is present in the passed arguments.
+		@throw Method parse() was not called.
+		@return True if arguemnt is present in the passed arguments, otherwise false.
+	*/
+	bool argPresent(const Argument& arg) const;
+
+	/**
+		@brief Checks if input parameters are parameters for outputting help. Method parse() must be called before this method.
 		@return Returns true if argv contains a help parameter, false otherwise.
 		@throw If argc == 0, beginIdx > argc, argv is NULL pointer.
 		@param argc count of arguments.

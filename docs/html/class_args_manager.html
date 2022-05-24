@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ArgumentsManager: ArgsManager Class Reference</title>
+<title>ArgsManager: ArgsManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ArgumentsManager
+   <div id="projectname">ArgsManager
    </div>
   </td>
  </tr>
@@ -101,18 +101,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const 
 <tr class="memitem:ae14b7ca80496bb5387570ebfb6a32973"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_args_manager.html">ArgsManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#ae14b7ca80496bb5387570ebfb6a32973">addOptional</a> (const <a class="el" href="class_argument.html">Argument</a> &amp;optionalArg)</td></tr>
 <tr class="memdesc:ae14b7ca80496bb5387570ebfb6a32973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an optional argument.  <a href="class_args_manager.html#ae14b7ca80496bb5387570ebfb6a32973">More...</a><br /></td></tr>
 <tr class="separator:ae14b7ca80496bb5387570ebfb6a32973"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44a1931034a806874f799e0433a9bd8d"><td class="memItemLeft" align="right" valign="top"><a id="a44a1931034a806874f799e0433a9bd8d" name="a44a1931034a806874f799e0433a9bd8d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearAllParams</b> ()</td></tr>
-<tr class="memdesc:a44a1931034a806874f799e0433a9bd8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the set of all argument. <br /></td></tr>
-<tr class="separator:a44a1931034a806874f799e0433a9bd8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb91ed486b3678d4e6f93bdde235a88b"><td class="memItemLeft" align="right" valign="top">ArgContentMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#aeb91ed486b3678d4e6f93bdde235a88b">parse</a> (const unsigned int argc, const char *const argv[], unsigned int beginIdx) const</td></tr>
-<tr class="memdesc:aeb91ed486b3678d4e6f93bdde235a88b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs parsing of passed arguments, validation of input arguments, and extraction of argument values.  <a href="class_args_manager.html#aeb91ed486b3678d4e6f93bdde235a88b">More...</a><br /></td></tr>
-<tr class="separator:aeb91ed486b3678d4e6f93bdde235a88b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47392e08ceb87f2dbecca66a3888cdd7"><td class="memItemLeft" align="right" valign="top">ArgContent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#a47392e08ceb87f2dbecca66a3888cdd7">argValue</a> (const ArgContentMap &amp;argContentMap, const <a class="el" href="class_argument.html">Argument</a> &amp;arg) const</td></tr>
-<tr class="memdesc:a47392e08ceb87f2dbecca66a3888cdd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract content from instance of ArgContentMap.  <a href="class_args_manager.html#a47392e08ceb87f2dbecca66a3888cdd7">More...</a><br /></td></tr>
-<tr class="separator:a47392e08ceb87f2dbecca66a3888cdd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae51558f2440ae7720693c5d687072889"><td class="memItemLeft" align="right" valign="top"><a id="ae51558f2440ae7720693c5d687072889" name="ae51558f2440ae7720693c5d687072889"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+<tr class="memdesc:ae51558f2440ae7720693c5d687072889"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the set of all argument. <br /></td></tr>
+<tr class="separator:ae51558f2440ae7720693c5d687072889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0373565177a398a80822fc1ca3c90c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9">parse</a> (const unsigned int argc, const char *const argv[], unsigned int beginIdx)</td></tr>
+<tr class="memdesc:ac0373565177a398a80822fc1ca3c90c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs parsing of passed arguments, validation of input arguments, and extraction of argument values.  <a href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9">More...</a><br /></td></tr>
+<tr class="separator:ac0373565177a398a80822fc1ca3c90c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a244d6ecd3434082d490cd2efebb67db9"><td class="memItemLeft" align="right" valign="top">ArgContent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#a244d6ecd3434082d490cd2efebb67db9">argValue</a> (const <a class="el" href="class_argument.html">Argument</a> &amp;arg) const</td></tr>
+<tr class="memdesc:a244d6ecd3434082d490cd2efebb67db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract content from instance of ArgContentMap. Method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> must be called before this method.  <a href="class_args_manager.html#a244d6ecd3434082d490cd2efebb67db9">More...</a><br /></td></tr>
+<tr class="separator:a244d6ecd3434082d490cd2efebb67db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cedc73395223aca8252ab076e8fbdd4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#a9cedc73395223aca8252ab076e8fbdd4">argPresent</a> (const <a class="el" href="class_argument.html">Argument</a> &amp;arg) const</td></tr>
+<tr class="memdesc:a9cedc73395223aca8252ab076e8fbdd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the argument is present in the passed arguments.  <a href="class_args_manager.html#a9cedc73395223aca8252ab076e8fbdd4">More...</a><br /></td></tr>
+<tr class="separator:a9cedc73395223aca8252ab076e8fbdd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35139f78f834f57a0f4d1c4c1f064bea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#a35139f78f834f57a0f4d1c4c1f064bea">isHelpArg</a> (const unsigned int argc, const char *const argv[], unsigned int beginIdx) const</td></tr>
-<tr class="memdesc:a35139f78f834f57a0f4d1c4c1f064bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if input parameters are parameters for outputting help.  <a href="class_args_manager.html#a35139f78f834f57a0f4d1c4c1f064bea">More...</a><br /></td></tr>
+<tr class="memdesc:a35139f78f834f57a0f4d1c4c1f064bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if input parameters are parameters for outputting help. Method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> must be called before this method.  <a href="class_args_manager.html#a35139f78f834f57a0f4d1c4c1f064bea">More...</a><br /></td></tr>
 <tr class="separator:a35139f78f834f57a0f4d1c4c1f064bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -168,7 +171,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add an optional argument. </p>
-<dl class="section return"><dt>Returns</dt><dd>instance of this calss. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Instance of this calss. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">optionalArg</td><td>added optional argument. </td></tr>
@@ -232,8 +235,35 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a47392e08ceb87f2dbecca66a3888cdd7" name="a47392e08ceb87f2dbecca66a3888cdd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47392e08ceb87f2dbecca66a3888cdd7">&#9670;&nbsp;</a></span>argValue()</h2>
+<a id="a9cedc73395223aca8252ab076e8fbdd4" name="a9cedc73395223aca8252ab076e8fbdd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cedc73395223aca8252ab076e8fbdd4">&#9670;&nbsp;</a></span>argPresent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ArgsManager::argPresent </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_argument.html">Argument</a> &amp;&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the argument is present in the passed arguments. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Method</td><td><a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> was not called. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if arguemnt is present in the passed arguments, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="a244d6ecd3434082d490cd2efebb67db9" name="a244d6ecd3434082d490cd2efebb67db9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a244d6ecd3434082d490cd2efebb67db9">&#9670;&nbsp;</a></span>argValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,34 +271,23 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">ArgContent ArgsManager::argValue </td>
           <td>(</td>
-          <td class="paramtype">const ArgContentMap &amp;&#160;</td>
-          <td class="paramname"><em>argContentMap</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const <a class="el" href="class_argument.html">Argument</a> &amp;&#160;</td>
-          <td class="paramname"><em>arg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Extract content from instance of ArgContentMap. </p>
+<p>Extract content from instance of ArgContentMap. Method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> must be called before this method. </p>
 <dl class="section return"><dt>Returns</dt><dd>Instance of ArgContent, contains the conent for the specified argument. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">arg</td><td>not found or has no content. </td></tr>
+    <tr><td class="paramname">arg</td><td>Not found, has no content or method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> was not called. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argContentMap</td><td>set of options and content. </td></tr>
     <tr><td class="paramname">arg</td><td>argument for which the content should be retrieved. </td></tr>
   </table>
   </dd>
@@ -336,7 +355,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Checks if input parameters are parameters for outputting help. </p>
+<p>Checks if input parameters are parameters for outputting help. Method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> must be called before this method. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns true if argv contains a help parameter, false otherwise. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
@@ -354,14 +373,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb91ed486b3678d4e6f93bdde235a88b" name="aeb91ed486b3678d4e6f93bdde235a88b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb91ed486b3678d4e6f93bdde235a88b">&#9670;&nbsp;</a></span>parse()</h2>
+<a id="ac0373565177a398a80822fc1ca3c90c9" name="ac0373565177a398a80822fc1ca3c90c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0373565177a398a80822fc1ca3c90c9">&#9670;&nbsp;</a></span>parse()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ArgContentMap ArgsManager::parse </td>
+          <td class="memname">void ArgsManager::parse </td>
           <td>(</td>
           <td class="paramtype">const unsigned int&#160;</td>
           <td class="paramname"><em>argc</em>, </td>
@@ -381,13 +400,12 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> const</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Performs parsing of passed arguments, validation of input arguments, and extraction of argument values. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns a structure containing the values associated with the arguments. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">If</td><td>argc == 0, beginIdx &gt; argc, argv is NULL pointer. </td></tr>
@@ -397,7 +415,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">argc</td><td>count of arguments. </td></tr>
-    <tr><td class="paramname">argv</td><td>arguments array. @beginIdx initial argument number. </td></tr>
+    <tr><td class="paramname">argv</td><td>arguments array. @beginIdx Initial argument number. </td></tr>
   </table>
   </dd>
 </dl>

@@ -20,6 +20,12 @@ The class representing the argument. The class contains information about the po
 \begin{DoxyCompactList}\small\item\em constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_argument_a7c8fdc93cbdb74a0973c05235c73e126}{Argument}} (bool \mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{has\+Content}}, std\+::string \&\&arg1, std\+::string \&\&arg2=std\+::string())
 \begin{DoxyCompactList}\small\item\em constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_argument_aef98e6b2d02db1dcc8a565a506185c12}\label{class_argument_aef98e6b2d02db1dcc8a565a506185c12}} 
+{\bfseries Argument} (\mbox{\hyperlink{class_argument}{Argument}} \&\&arg) noexcept
+\begin{DoxyCompactList}\small\item\em Move semantics constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_argument_a8c8192e405e10512b194601ab2d25076}\label{class_argument_a8c8192e405e10512b194601ab2d25076}} 
+\mbox{\hyperlink{class_argument}{Argument}} \& {\bfseries operator=} (\mbox{\hyperlink{class_argument}{Argument}} \&\&arg) noexcept
+\begin{DoxyCompactList}\small\item\em Move semantics operator=. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_argument_a1c5b298c5eae06a54575f7f9c05a9b06}\label{class_argument_a1c5b298c5eae06a54575f7f9c05a9b06}} 
 {\bfseries Argument} (const \mbox{\hyperlink{class_argument}{Argument}} \&)=default
 \item 
@@ -39,7 +45,7 @@ bool \mbox{\hyperlink{class_argument_a4672210f2d1a170aced4d31f50773eb8}{operator
 \begin{DoxyCompactList}\small\item\em Returns TRUE if argument 1 and argument 2 are the same, otherwise FALSE. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_argument_aed10c835e1178ae97a73310064bd96ef}{operator==}} (const std\+::string \&arg) const noexcept
 \begin{DoxyCompactList}\small\item\em Returns TRUE if argument 1 or argument 2 is the same as. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_argument_af54c4de01aadb3e426591029ea3a6f46}{operator==}} (const char $\ast$const arg) const noexcept
+bool \mbox{\hyperlink{class_argument_afe79e548a31540fab76a86f1f72d3a5c}{operator==}} (const char $\ast$const arg) const
 \begin{DoxyCompactList}\small\item\em Returns TRUE if argument 1 or argument 2 is the same as. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -153,11 +159,11 @@ Returns TRUE if argument 1 and argument 2 are the same, otherwise FALSE.
 {\em arg} & instance of \mbox{\hyperlink{class_argument}{Argument}}. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_argument_af54c4de01aadb3e426591029ea3a6f46}\label{class_argument_af54c4de01aadb3e426591029ea3a6f46}} 
+\mbox{\Hypertarget{class_argument_afe79e548a31540fab76a86f1f72d3a5c}\label{class_argument_afe79e548a31540fab76a86f1f72d3a5c}} 
 \index{Argument@{Argument}!operator==@{operator==}}
 \index{operator==@{operator==}!Argument@{Argument}}
 \doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily bool Argument\+::operator== (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{arg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily bool Argument\+::operator== (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{arg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

@@ -12,19 +12,19 @@
 \DoxyCodeLine{9 }
 \DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}InvalidArg.h"{}}}
 \DoxyCodeLine{11 }
-\DoxyCodeLine{27 \textcolor{keyword}{class }\mbox{\hyperlink{class_argument}{Argument}} \{}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{21 \textcolor{comment}{// TODO: definition to separate file.}}
+\DoxyCodeLine{22 \textcolor{comment}{// TODO: move implementation to CPP-\/file.}}
+\DoxyCodeLine{29 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_argument}{Argument}} \{}
 \DoxyCodeLine{30 }
-\DoxyCodeLine{31     \textcolor{keyword}{const} std::string arg1;}
-\DoxyCodeLine{32     \textcolor{keyword}{const} std::string arg2;}
-\DoxyCodeLine{33     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* emptyArgsErrorMsg = \textcolor{stringliteral}{"{}Add argument cannot be empty!"{}};}
-\DoxyCodeLine{34     \textcolor{keywordtype}{bool} has\_Content = \textcolor{keyword}{false};}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{36 \textcolor{keyword}{public}:}
+\DoxyCodeLine{31 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     std::string arg1;}
+\DoxyCodeLine{34     std::string arg2;}
+\DoxyCodeLine{35     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* emptyArgsErrorMsg = \textcolor{stringliteral}{"{}Add argument cannot be empty!"{}};}
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} has\_Content = \textcolor{keyword}{false};}
 \DoxyCodeLine{37 }
-\DoxyCodeLine{38     \textcolor{comment}{// TODO: add move semantics constructor.}}
-\DoxyCodeLine{39 }
+\DoxyCodeLine{38 \textcolor{keyword}{public}:}
+\DoxyCodeLine{39     }
 \DoxyCodeLine{45     \mbox{\hyperlink{class_argument_a6cae7e7f41f7021b41e6fe17e87a5208}{Argument}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} arg1) :}
 \DoxyCodeLine{46         arg1(arg1) \{}
 \DoxyCodeLine{47         \textcolor{keywordflow}{if} (arg1 == \textcolor{keyword}{nullptr} || std::string(arg1).empty())}
@@ -37,102 +37,115 @@
 \DoxyCodeLine{60             \textcolor{keywordflow}{throw} std::invalid\_argument(emptyArgsErrorMsg);}
 \DoxyCodeLine{61     \}}
 \DoxyCodeLine{62 }
-\DoxyCodeLine{70     \mbox{\hyperlink{class_argument_a4d166340dd83c4ad11b3e952f1a661be}{Argument}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{hasContent}}, \textcolor{keyword}{const} std::string\& arg1, \textcolor{keyword}{const} std::string\& arg2 = std::string()):}
+\DoxyCodeLine{70     \mbox{\hyperlink{class_argument_a4d166340dd83c4ad11b3e952f1a661be}{Argument}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{hasContent}}, \textcolor{keyword}{const} std::string\& arg1, \textcolor{keyword}{const} std::string\& arg2 = std::string()) :}
 \DoxyCodeLine{71         arg1(arg1), arg2(arg2), has\_Content(\mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{hasContent}}) \{}
 \DoxyCodeLine{72         \textcolor{keywordflow}{if} (arg1.empty())}
 \DoxyCodeLine{73             \textcolor{keywordflow}{throw} std::invalid\_argument(emptyArgsErrorMsg);}
 \DoxyCodeLine{74     \}}
 \DoxyCodeLine{75 }
-\DoxyCodeLine{82     \mbox{\hyperlink{class_argument_a7c8fdc93cbdb74a0973c05235c73e126}{Argument}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{hasContent}}, std::string\&\& arg1, std::string\&\& arg2 = std::string()):}
+\DoxyCodeLine{82     \mbox{\hyperlink{class_argument_a7c8fdc93cbdb74a0973c05235c73e126}{Argument}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{hasContent}}, std::string\&\& arg1, std::string\&\& arg2 = std::string()) :}
 \DoxyCodeLine{83         arg1(std::move(arg1)), arg2(std::move(arg2)), has\_Content(\mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{hasContent}}) \{\}}
 \DoxyCodeLine{84 }
-\DoxyCodeLine{85     \mbox{\hyperlink{class_argument_a6cae7e7f41f7021b41e6fe17e87a5208}{Argument}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\&) = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{86     \mbox{\hyperlink{class_argument}{Argument}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\&) = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{87 }
-\DoxyCodeLine{91     \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{92         \textcolor{keywordflow}{return} arg1;}
-\DoxyCodeLine{93     \};}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{98     \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{99         \textcolor{keywordflow}{return} arg2;}
-\DoxyCodeLine{100     \};}
-\DoxyCodeLine{101 }
-\DoxyCodeLine{105     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{hasContent}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{106         \textcolor{keywordflow}{return} has\_Content;}
-\DoxyCodeLine{107     \}}
-\DoxyCodeLine{108 }
-\DoxyCodeLine{113     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_a4672210f2d1a170aced4d31f50773eb8}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg) \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{}
-\DoxyCodeLine{114         \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}() == arg.getArg1() \&\& \mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}() == arg.getArg2());}
-\DoxyCodeLine{115     \}}
-\DoxyCodeLine{116 }
-\DoxyCodeLine{121     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_aed10c835e1178ae97a73310064bd96ef}{operator==}}(\textcolor{keyword}{const} std::string\& arg) \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{}
-\DoxyCodeLine{122         \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}() == arg || \mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}() == arg);}
-\DoxyCodeLine{123     \}}
-\DoxyCodeLine{124 }
-\DoxyCodeLine{130     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_af54c4de01aadb3e426591029ea3a6f46}{operator==}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} arg) \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{}
-\DoxyCodeLine{131         \textcolor{keywordflow}{if} (arg == \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{132             \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}arg is NULL"{}});}
-\DoxyCodeLine{133         \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}() == arg || \mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}() == arg);}
-\DoxyCodeLine{134     \}}
-\DoxyCodeLine{135 \};}
-\DoxyCodeLine{136 }
-\DoxyCodeLine{137 \textcolor{keyword}{namespace }std \{}
-\DoxyCodeLine{138     \textcolor{keyword}{template}<> }
-\DoxyCodeLine{142     \textcolor{keyword}{struct }hash<\mbox{\hyperlink{class_argument}{Argument}}> \{}
-\DoxyCodeLine{143         std::size\_t operator()(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& value) \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{}
-\DoxyCodeLine{144             hash<string> hash;}
-\DoxyCodeLine{145             \textcolor{keyword}{const} std::size\_t hashValue1 = hash(value.\mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}());}
-\DoxyCodeLine{146             \textcolor{keyword}{const} std::size\_t hashValue2 = hash(value.\mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}());}
-\DoxyCodeLine{147             \textcolor{keywordflow}{return} hashValue1 \string^ (hashValue2 << 1);}
-\DoxyCodeLine{148         \}}
-\DoxyCodeLine{149     \};}
-\DoxyCodeLine{150 \}}
-\DoxyCodeLine{151 }
-\DoxyCodeLine{152 \textcolor{keyword}{class }\mbox{\hyperlink{class_args_manager}{ArgsManager}};}
-\DoxyCodeLine{153 }
-\DoxyCodeLine{154 \textcolor{keyword}{using }ArgContent = std::string;}
-\DoxyCodeLine{155 \textcolor{keyword}{using }ArgContentMap = std::unordered\_map<Argument, ArgContent>;}
-\DoxyCodeLine{156 }
-\DoxyCodeLine{161 \textcolor{keyword}{class }\mbox{\hyperlink{class_args_manager}{ArgsManager}}}
-\DoxyCodeLine{162 \{}
-\DoxyCodeLine{163 }
-\DoxyCodeLine{164 \textcolor{keyword}{private}:}
-\DoxyCodeLine{165 }
-\DoxyCodeLine{166     \mbox{\hyperlink{class_args_manager}{ArgsManager}}() = \textcolor{keywordflow}{default}; }
-\DoxyCodeLine{167     std::unordered\_set<Argument>}
-\DoxyCodeLine{168           requiredArgs}
-\DoxyCodeLine{169         , optionalArgs}
-\DoxyCodeLine{170         , requiredArgSet;}
-\DoxyCodeLine{171 }
-\DoxyCodeLine{172     ArgContent getContentForArg(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& argument, }
-\DoxyCodeLine{173         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} idx, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} argv[]) \textcolor{keyword}{const};}
-\DoxyCodeLine{174 }
-\DoxyCodeLine{175     std::unordered\_set<std::string> helpArgs;}
-\DoxyCodeLine{176 }
-\DoxyCodeLine{177 \textcolor{keyword}{public}:}
-\DoxyCodeLine{178     \mbox{\hyperlink{class_args_manager}{ArgsManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\&) = \textcolor{keyword}{delete};}
-\DoxyCodeLine{179     \mbox{\hyperlink{class_args_manager}{ArgsManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\&\&) = \textcolor{keyword}{delete};}
-\DoxyCodeLine{180     \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\&) = \textcolor{keyword}{delete};}
-\DoxyCodeLine{181     \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\&\&) = \textcolor{keyword}{delete};}
-\DoxyCodeLine{182 }
-\DoxyCodeLine{187     \textcolor{keyword}{static} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_ad46cc12245591f2ec750eed86973dfc5}{getInstance}}();}
-\DoxyCodeLine{188     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_args_manager}{\string~ArgsManager}}();}
-\DoxyCodeLine{189 }
-\DoxyCodeLine{195     \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_acdaa5e3f3fbfe80e97523022a3fd9a5b}{addHelp}}(\textcolor{keyword}{const} std::string\& helpParam);}
-\DoxyCodeLine{196 }
-\DoxyCodeLine{202     \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_a7386104e045e9d0d37526228d44163d3}{addRequired}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg);}
-\DoxyCodeLine{203 }
-\DoxyCodeLine{210     \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_a659149fcafe74aab0867ac2f80ef51f5}{addRequiredToSet}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg);}
-\DoxyCodeLine{211 }
-\DoxyCodeLine{217     \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_ae14b7ca80496bb5387570ebfb6a32973}{addOptional}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& optionalArg);}
-\DoxyCodeLine{218 }
-\DoxyCodeLine{222     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_args_manager_a44a1931034a806874f799e0433a9bd8d}{clearAllParams}}();}
-\DoxyCodeLine{223 }
-\DoxyCodeLine{232     ArgContentMap \mbox{\hyperlink{class_args_manager_aeb91ed486b3678d4e6f93bdde235a88b}{parse}}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} beginIdx) \textcolor{keyword}{const};}
-\DoxyCodeLine{233 }
-\DoxyCodeLine{241     ArgContent \mbox{\hyperlink{class_args_manager_a47392e08ceb87f2dbecca66a3888cdd7}{argValue}}(\textcolor{keyword}{const} ArgContentMap\& argContentMap, \textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg) \textcolor{keyword}{const};}
-\DoxyCodeLine{242 }
-\DoxyCodeLine{251     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_args_manager_a35139f78f834f57a0f4d1c4c1f064bea}{isHelpArg}}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} beginIdx) \textcolor{keyword}{const};}
-\DoxyCodeLine{252 \};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{89     \mbox{\hyperlink{class_argument_aef98e6b2d02db1dcc8a565a506185c12}{Argument}}(\mbox{\hyperlink{class_argument}{Argument}}\&\& arg) \textcolor{keyword}{noexcept} \{}
+\DoxyCodeLine{90         *\textcolor{keyword}{this} = std::move(arg);}
+\DoxyCodeLine{91     \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{96     \mbox{\hyperlink{class_argument}{Argument}}\& \mbox{\hyperlink{class_argument_a8c8192e405e10512b194601ab2d25076}{operator=}}(\mbox{\hyperlink{class_argument}{Argument}}\&\& arg) \textcolor{keyword}{noexcept} \{}
+\DoxyCodeLine{97         arg1 = std::move(arg.arg1);}
+\DoxyCodeLine{98         arg2 = std::move(arg.arg2);}
+\DoxyCodeLine{99         has\_Content = arg.has\_Content;}
+\DoxyCodeLine{100         arg.has\_Content = \textcolor{keyword}{false};}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \mbox{\hyperlink{class_argument_a6cae7e7f41f7021b41e6fe17e87a5208}{Argument}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{104     \mbox{\hyperlink{class_argument}{Argument}}\& \mbox{\hyperlink{class_argument_a8c8192e405e10512b194601ab2d25076}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{109     \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{110         \textcolor{keywordflow}{return} arg1;}
+\DoxyCodeLine{111     \};}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{116     \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{117         \textcolor{keywordflow}{return} arg2;}
+\DoxyCodeLine{118     \};}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{123     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_ab4c8bba95b51cfca744813fc1b27e70d}{hasContent}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{124         \textcolor{keywordflow}{return} has\_Content;}
+\DoxyCodeLine{125     \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{131     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_a4672210f2d1a170aced4d31f50773eb8}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg) \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{}
+\DoxyCodeLine{132         \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}() == arg.getArg1() \&\& \mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}() == arg.getArg2());}
+\DoxyCodeLine{133     \}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{139     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_aed10c835e1178ae97a73310064bd96ef}{operator==}}(\textcolor{keyword}{const} std::string\& arg) \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{}
+\DoxyCodeLine{140         \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}() == arg || \mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}() == arg);}
+\DoxyCodeLine{141     \}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{148     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_argument_afe79e548a31540fab76a86f1f72d3a5c}{operator==}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} arg)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{149         \textcolor{keywordflow}{if} (arg == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{150             \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}arg is NULL"{}});}
+\DoxyCodeLine{151         \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}() == arg || \mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}() == arg);}
+\DoxyCodeLine{152     \}}
+\DoxyCodeLine{153 \};}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 \textcolor{keyword}{namespace }std \{}
+\DoxyCodeLine{156     \textcolor{keyword}{template}<>}
+\DoxyCodeLine{160     \textcolor{keyword}{struct }hash<\mbox{\hyperlink{class_argument}{Argument}}> \{}
+\DoxyCodeLine{161         std::size\_t operator()(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& value) \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{}
+\DoxyCodeLine{162             hash<string> hash;}
+\DoxyCodeLine{163             \textcolor{keyword}{const} std::size\_t hashValue1 = hash(value.\mbox{\hyperlink{class_argument_aa42ef2656288de215565d428bb6b149c}{getArg1}}());}
+\DoxyCodeLine{164             \textcolor{keyword}{const} std::size\_t hashValue2 = hash(value.\mbox{\hyperlink{class_argument_aed32384b521d8cd12e67a26859813d4e}{getArg2}}());}
+\DoxyCodeLine{165             \textcolor{keywordflow}{return} hashValue1 \string^ (hashValue2 << 1);}
+\DoxyCodeLine{166         \}}
+\DoxyCodeLine{167     \};}
+\DoxyCodeLine{168 \}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170 \textcolor{keyword}{using }ArgContent = std::string;}
+\DoxyCodeLine{171 \textcolor{keyword}{using }ArgContentMap = std::unordered\_map<Argument, ArgContent>;}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{177 \textcolor{keyword}{class }\mbox{\hyperlink{class_args_manager}{ArgsManager}}}
+\DoxyCodeLine{178 \{}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \textcolor{keyword}{private}:}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     \mbox{\hyperlink{class_args_manager}{ArgsManager}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{183     std::unordered\_set<Argument>}
+\DoxyCodeLine{184         requiredArgs}
+\DoxyCodeLine{185         , optionalArgs}
+\DoxyCodeLine{186         , requiredArgSet;}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188     ArgContent getContent(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& argument,}
+\DoxyCodeLine{189         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} idx, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} argv[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191     std::unordered\_set<std::string> helpArgs;}
+\DoxyCodeLine{192     \textcolor{keywordtype}{bool} parsed = \textcolor{keyword}{false};}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194 \textcolor{keyword}{public}:}
+\DoxyCodeLine{195     \mbox{\hyperlink{class_args_manager}{ArgsManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{196     \mbox{\hyperlink{class_args_manager}{ArgsManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\&\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{197     \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{198     \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\&\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{204     \textcolor{keyword}{static} \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_ad46cc12245591f2ec750eed86973dfc5}{getInstance}}();}
+\DoxyCodeLine{205     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_args_manager}{\string~ArgsManager}}();}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{212     \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_acdaa5e3f3fbfe80e97523022a3fd9a5b}{addHelp}}(\textcolor{keyword}{const} std::string\& helpParam);}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{219     \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_a7386104e045e9d0d37526228d44163d3}{addRequired}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg);}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{227     \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_a659149fcafe74aab0867ac2f80ef51f5}{addRequiredToSet}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg);}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{234     \mbox{\hyperlink{class_args_manager}{ArgsManager}}\& \mbox{\hyperlink{class_args_manager_ae14b7ca80496bb5387570ebfb6a32973}{addOptional}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& optionalArg);}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{239     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_args_manager_ae51558f2440ae7720693c5d687072889}{clear}}();}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{248     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_args_manager_ac0373565177a398a80822fc1ca3c90c9}{parse}}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} beginIdx);}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{256     ArgContent \mbox{\hyperlink{class_args_manager_a244d6ecd3434082d490cd2efebb67db9}{argValue}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg) \textcolor{keyword}{const};}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{263     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_args_manager_a9cedc73395223aca8252ab076e8fbdd4}{argPresent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_argument}{Argument}}\& arg) \textcolor{keyword}{const};}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{273     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_args_manager_a35139f78f834f57a0f4d1c4c1f064bea}{isHelpArg}}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} beginIdx) \textcolor{keyword}{const};}
+\DoxyCodeLine{274 \};}
 
 \end{DoxyCode}

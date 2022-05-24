@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['argumentsmanager_0',['ArgumentsManager',['../index.html',1,'']]]
+  ['argsmanager_0',['ArgsManager',['../index.html',1,'']]]
 ];

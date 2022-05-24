@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['clearallparams_0',['clearAllParams',['../class_args_manager.html#a44a1931034a806874f799e0433a9bd8d',1,'ArgsManager']]]
+  ['clear_0',['clear',['../class_args_manager.html#ae51558f2440ae7720693c5d687072889',1,'ArgsManager']]]
 ];
