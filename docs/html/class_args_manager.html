@@ -70,7 +70,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Provides options for registering arguments, parsing them, validating them, extracting content.  
+<p>Provides options for registering arguments, parsing them, validating them, extracting content. The class implements the singleton pattern.  
  <a href="class_args_manager.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_args_manager_8h_source.html">ArgsManager.h</a>&gt;</code></p>
@@ -108,9 +108,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <tr class="memitem:ac0373565177a398a80822fc1ca3c90c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9">parse</a> (const unsigned int argc, const char *const argv[], unsigned int beginIdx)</td></tr>
 <tr class="memdesc:ac0373565177a398a80822fc1ca3c90c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs parsing of passed arguments, validation of input arguments, and extraction of argument values.  <a href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9">More...</a><br /></td></tr>
 <tr class="separator:ac0373565177a398a80822fc1ca3c90c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a244d6ecd3434082d490cd2efebb67db9"><td class="memItemLeft" align="right" valign="top">ArgContent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#a244d6ecd3434082d490cd2efebb67db9">argValue</a> (const <a class="el" href="class_argument.html">Argument</a> &amp;arg) const</td></tr>
-<tr class="memdesc:a244d6ecd3434082d490cd2efebb67db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract content from instance of ArgContentMap. Method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> must be called before this method.  <a href="class_args_manager.html#a244d6ecd3434082d490cd2efebb67db9">More...</a><br /></td></tr>
-<tr class="separator:a244d6ecd3434082d490cd2efebb67db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b311f13dc3c573871e9fc6900f6c0cc"><td class="memItemLeft" align="right" valign="top">Content&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#a8b311f13dc3c573871e9fc6900f6c0cc">argValue</a> (const <a class="el" href="class_argument.html">Argument</a> &amp;arg) const</td></tr>
+<tr class="memdesc:a8b311f13dc3c573871e9fc6900f6c0cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract content from instance of ArgContentMap. Method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> must be called before this method.  <a href="class_args_manager.html#a8b311f13dc3c573871e9fc6900f6c0cc">More...</a><br /></td></tr>
+<tr class="separator:a8b311f13dc3c573871e9fc6900f6c0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cedc73395223aca8252ab076e8fbdd4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_args_manager.html#a9cedc73395223aca8252ab076e8fbdd4">argPresent</a> (const <a class="el" href="class_argument.html">Argument</a> &amp;arg) const</td></tr>
 <tr class="memdesc:a9cedc73395223aca8252ab076e8fbdd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the argument is present in the passed arguments.  <a href="class_args_manager.html#a9cedc73395223aca8252ab076e8fbdd4">More...</a><br /></td></tr>
 <tr class="separator:a9cedc73395223aca8252ab076e8fbdd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,7 +125,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ad46cc12245591f2ec750eed86973dfc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Provides options for registering arguments, parsing them, validating them, extracting content. </p>
+<div class="textblock"><p >Provides options for registering arguments, parsing them, validating them, extracting content. The class implements the singleton pattern. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="acdaa5e3f3fbfe80e97523022a3fd9a5b" name="acdaa5e3f3fbfe80e97523022a3fd9a5b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acdaa5e3f3fbfe80e97523022a3fd9a5b">&#9670;&nbsp;</a></span>addHelp()</h2>
@@ -252,24 +252,30 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Checks if the argument is present in the passed arguments. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if arguemnt is present in the passed arguments, otherwise false. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">Method</td><td><a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> was not called. </td></tr>
+    <tr><td class="paramname">If</td><td>method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> was not called. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if arguemnt is present in the passed arguments, otherwise false. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td><a class="el" href="class_argument.html" title="The class representing the argument. The class contains information about the potential input argumen...">Argument</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a244d6ecd3434082d490cd2efebb67db9" name="a244d6ecd3434082d490cd2efebb67db9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a244d6ecd3434082d490cd2efebb67db9">&#9670;&nbsp;</a></span>argValue()</h2>
+<a id="a8b311f13dc3c573871e9fc6900f6c0cc" name="a8b311f13dc3c573871e9fc6900f6c0cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b311f13dc3c573871e9fc6900f6c0cc">&#9670;&nbsp;</a></span>argValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ArgContent ArgsManager::argValue </td>
+          <td class="memname">Content ArgsManager::argValue </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_argument.html">Argument</a> &amp;&#160;</td>
           <td class="paramname"><em>arg</em></td><td>)</td>
@@ -279,7 +285,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Extract content from instance of ArgContentMap. Method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> must be called before this method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Instance of ArgContent, contains the conent for the specified argument. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Instance of <a class="el" href="struct_arg_content.html">ArgContent</a>, contains the conent for the specified argument. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">arg</td><td>Not found, has no content or method <a class="el" href="class_args_manager.html#ac0373565177a398a80822fc1ca3c90c9" title="Performs parsing of passed arguments, validation of input arguments, and extraction of argument value...">parse()</a> was not called. </td></tr>

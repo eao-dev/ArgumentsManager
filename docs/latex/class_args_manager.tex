@@ -2,7 +2,7 @@
 \label{class_args_manager}\index{ArgsManager@{ArgsManager}}
 
 
-Provides options for registering arguments, parsing them, validating them, extracting content.  
+Provides options for registering arguments, parsing them, validating them, extracting content. The class implements the singleton pattern.  
 
 
 
@@ -37,7 +37,7 @@ void {\bfseries clear} ()
 \begin{DoxyCompactList}\small\item\em Clear the set of all argument. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_args_manager_ac0373565177a398a80822fc1ca3c90c9}{parse}} (const unsigned int argc, const char $\ast$const argv\mbox{[}$\,$\mbox{]}, unsigned int begin\+Idx)
 \begin{DoxyCompactList}\small\item\em Performs parsing of passed arguments, validation of input arguments, and extraction of argument values. \end{DoxyCompactList}\item 
-Arg\+Content \mbox{\hyperlink{class_args_manager_a244d6ecd3434082d490cd2efebb67db9}{arg\+Value}} (const \mbox{\hyperlink{class_argument}{Argument}} \&arg) const
+Content \mbox{\hyperlink{class_args_manager_a8b311f13dc3c573871e9fc6900f6c0cc}{arg\+Value}} (const \mbox{\hyperlink{class_argument}{Argument}} \&arg) const
 \begin{DoxyCompactList}\small\item\em Extract content from instance of Arg\+Content\+Map. Method \mbox{\hyperlink{class_args_manager_ac0373565177a398a80822fc1ca3c90c9}{parse()}} must be called before this method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_args_manager_a9cedc73395223aca8252ab076e8fbdd4}{arg\+Present}} (const \mbox{\hyperlink{class_argument}{Argument}} \&arg) const
 \begin{DoxyCompactList}\small\item\em Checks if the argument is present in the passed arguments. \end{DoxyCompactList}\item 
@@ -51,7 +51,7 @@ static \mbox{\hyperlink{class_args_manager}{Args\+Manager}} \& \mbox{\hyperlink{
 
 
 \doxysubsection{Detailed Description}
-Provides options for registering arguments, parsing them, validating them, extracting content. 
+Provides options for registering arguments, parsing them, validating them, extracting content. The class implements the singleton pattern. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_args_manager_acdaa5e3f3fbfe80e97523022a3fd9a5b}\label{class_args_manager_acdaa5e3f3fbfe80e97523022a3fd9a5b}} 
@@ -136,26 +136,31 @@ instance of this calss. At least one argument added with this method must be pas
 
 Checks if the argument is present in the passed arguments. 
 
-
-\begin{DoxyExceptions}{Exceptions}
-{\em Method} & \mbox{\hyperlink{class_args_manager_ac0373565177a398a80822fc1ca3c90c9}{parse()}} was not called. \\
-\hline
-\end{DoxyExceptions}
 \begin{DoxyReturn}{Returns}
 True if arguemnt is present in the passed arguments, otherwise false. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_args_manager_a244d6ecd3434082d490cd2efebb67db9}\label{class_args_manager_a244d6ecd3434082d490cd2efebb67db9}} 
+
+\begin{DoxyExceptions}{Exceptions}
+{\em If} & method \mbox{\hyperlink{class_args_manager_ac0373565177a398a80822fc1ca3c90c9}{parse()}} was not called. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \mbox{\hyperlink{class_argument}{Argument}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_args_manager_a8b311f13dc3c573871e9fc6900f6c0cc}\label{class_args_manager_a8b311f13dc3c573871e9fc6900f6c0cc}} 
 \index{ArgsManager@{ArgsManager}!argValue@{argValue}}
 \index{argValue@{argValue}!ArgsManager@{ArgsManager}}
 \doxysubsubsection{\texorpdfstring{argValue()}{argValue()}}
-{\footnotesize\ttfamily Arg\+Content Args\+Manager\+::arg\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_argument}{Argument}} \&}]{arg }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily Content Args\+Manager\+::arg\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_argument}{Argument}} \&}]{arg }\end{DoxyParamCaption}) const}
 
 
 
 Extract content from instance of Arg\+Content\+Map. Method \mbox{\hyperlink{class_args_manager_ac0373565177a398a80822fc1ca3c90c9}{parse()}} must be called before this method. 
 
 \begin{DoxyReturn}{Returns}
-Instance of Arg\+Content, contains the conent for the specified argument. 
+Instance of \mbox{\hyperlink{struct_arg_content}{Arg\+Content}}, contains the conent for the specified argument. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}

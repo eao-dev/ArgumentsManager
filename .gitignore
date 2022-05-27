@@ -1,2 +1,6 @@
 Source/Doxyfile
 build
+vcxproj.filters
+vcxproj.user
+x64
+Test/x64

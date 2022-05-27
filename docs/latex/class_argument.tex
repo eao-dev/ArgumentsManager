@@ -7,7 +7,7 @@ The class representing the argument. The class contains information about the po
 
 
 
-{\ttfamily \#include $<$Args\+Manager.\+h$>$}
+{\ttfamily \#include $<$Argument.\+h$>$}
 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -42,11 +42,9 @@ const std\+::string \& {\bfseries get\+Arg2} () const
 bool {\bfseries has\+Content} () const
 \begin{DoxyCompactList}\small\item\em Returns TRUE if content should be passed to the argument, otherwise FALSE. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_argument_a4672210f2d1a170aced4d31f50773eb8}{operator==}} (const \mbox{\hyperlink{class_argument}{Argument}} \&arg) const noexcept
-\begin{DoxyCompactList}\small\item\em Returns TRUE if argument 1 and argument 2 are the same, otherwise FALSE. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns TRUE if at least one argument matches, otherwise FALSE. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_argument_aed10c835e1178ae97a73310064bd96ef}{operator==}} (const std\+::string \&arg) const noexcept
-\begin{DoxyCompactList}\small\item\em Returns TRUE if argument 1 or argument 2 is the same as. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_argument_afe79e548a31540fab76a86f1f72d3a5c}{operator==}} (const char $\ast$const arg) const
-\begin{DoxyCompactList}\small\item\em Returns TRUE if argument 1 or argument 2 is the same as. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns TRUE if at least one argument matches, FALSE otherwise. Example\+: \mbox{\hyperlink{class_argument}{Argument}}(false, \char`\"{}-\/a\char`\"{}, \char`\"{}-\/b\char`\"{}) == \mbox{\hyperlink{class_argument}{Argument}}(false, \char`\"{}-\/a\char`\"{}) \mbox{\hyperlink{class_argument}{Argument}}(false, \char`\"{}-\/a\char`\"{}, \char`\"{}-\/b\char`\"{}) == \mbox{\hyperlink{class_argument}{Argument}}(false, \char`\"{}-\/b\char`\"{}) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -57,7 +55,7 @@ The class representing the argument. The class contains information about the po
 \index{Argument@{Argument}!Argument@{Argument}}
 \index{Argument@{Argument}!Argument@{Argument}}
 \doxysubsubsection{\texorpdfstring{Argument()}{Argument()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
-{\footnotesize\ttfamily Argument\+::\+Argument (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Argument\+::\+Argument (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{arg1 }\end{DoxyParamCaption})}
 
 
 
@@ -77,7 +75,7 @@ constructor.
 \index{Argument@{Argument}!Argument@{Argument}}
 \index{Argument@{Argument}!Argument@{Argument}}
 \doxysubsubsection{\texorpdfstring{Argument()}{Argument()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
-{\footnotesize\ttfamily Argument\+::\+Argument (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{arg1,  }\item[{const std\+::string \&}]{arg2 = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Argument\+::\+Argument (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{arg1,  }\item[{const std\+::string \&}]{arg2 = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})}
 
 
 
@@ -99,7 +97,7 @@ constructor.
 \index{Argument@{Argument}!Argument@{Argument}}
 \index{Argument@{Argument}!Argument@{Argument}}
 \doxysubsubsection{\texorpdfstring{Argument()}{Argument()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily Argument\+::\+Argument (\begin{DoxyParamCaption}\item[{bool}]{has\+Content,  }\item[{const std\+::string \&}]{arg1,  }\item[{const std\+::string \&}]{arg2 = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Argument\+::\+Argument (\begin{DoxyParamCaption}\item[{bool}]{has\+Content,  }\item[{const std\+::string \&}]{arg1,  }\item[{const std\+::string \&}]{arg2 = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})}
 
 
 
@@ -126,7 +124,7 @@ constructor.
 \index{Argument@{Argument}!Argument@{Argument}}
 \index{Argument@{Argument}!Argument@{Argument}}
 \doxysubsubsection{\texorpdfstring{Argument()}{Argument()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily Argument\+::\+Argument (\begin{DoxyParamCaption}\item[{bool}]{has\+Content,  }\item[{std\+::string \&\&}]{arg1,  }\item[{std\+::string \&\&}]{arg2 = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Argument\+::\+Argument (\begin{DoxyParamCaption}\item[{bool}]{has\+Content,  }\item[{std\+::string \&\&}]{arg1,  }\item[{std\+::string \&\&}]{arg2 = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})}
 
 
 
@@ -147,59 +145,36 @@ constructor.
 \mbox{\Hypertarget{class_argument_a4672210f2d1a170aced4d31f50773eb8}\label{class_argument_a4672210f2d1a170aced4d31f50773eb8}} 
 \index{Argument@{Argument}!operator==@{operator==}}
 \index{operator==@{operator==}!Argument@{Argument}}
-\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily bool Argument\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_argument}{Argument}} \&}]{arg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Argument\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_argument}{Argument}} \&}]{arg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
 
 
 
-Returns TRUE if argument 1 and argument 2 are the same, otherwise FALSE. 
+Returns TRUE if at least one argument matches, otherwise FALSE. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em arg} & instance of \mbox{\hyperlink{class_argument}{Argument}}. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_argument_afe79e548a31540fab76a86f1f72d3a5c}\label{class_argument_afe79e548a31540fab76a86f1f72d3a5c}} 
-\index{Argument@{Argument}!operator==@{operator==}}
-\index{operator==@{operator==}!Argument@{Argument}}
-\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily bool Argument\+::operator== (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{arg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Returns TRUE if argument 1 or argument 2 is the same as. 
-
-\begin{DoxyItemize}
-\item , FALSE otherwise. 
-\begin{DoxyExceptions}{Exceptions}
-{\em If} & arg is NULL. \\
-\hline
-\end{DoxyExceptions}
-
-\begin{DoxyParams}{Parameters}
-{\em arg} & argument. \\
-\hline
-\end{DoxyParams}
-\end{DoxyItemize}
 \mbox{\Hypertarget{class_argument_aed10c835e1178ae97a73310064bd96ef}\label{class_argument_aed10c835e1178ae97a73310064bd96ef}} 
 \index{Argument@{Argument}!operator==@{operator==}}
 \index{operator==@{operator==}!Argument@{Argument}}
-\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily bool Argument\+::operator== (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{arg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Argument\+::operator== (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{arg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
 
 
 
-Returns TRUE if argument 1 or argument 2 is the same as. 
+Returns TRUE if at least one argument matches, FALSE otherwise. Example\+: \mbox{\hyperlink{class_argument}{Argument}}(false, \char`\"{}-\/a\char`\"{}, \char`\"{}-\/b\char`\"{}) == \mbox{\hyperlink{class_argument}{Argument}}(false, \char`\"{}-\/a\char`\"{}) \mbox{\hyperlink{class_argument}{Argument}}(false, \char`\"{}-\/a\char`\"{}, \char`\"{}-\/b\char`\"{}) == \mbox{\hyperlink{class_argument}{Argument}}(false, \char`\"{}-\/b\char`\"{}) 
 
-\begin{DoxyItemize}
-\item , FALSE otherwise. 
+
 \begin{DoxyParams}{Parameters}
 {\em arg} & argument. \\
 \hline
 \end{DoxyParams}
-\end{DoxyItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Args\+Manager.\+h\end{DoxyCompactItemize}
+Argument.\+h\item 
+Argument.\+cpp\end{DoxyCompactItemize}

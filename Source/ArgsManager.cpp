@@ -1,8 +1,6 @@
 #include "ArgsManager.h"
 
-ArgContentMap argContentMap;
-
-ArgContent ArgsManager::getContent(const Argument& arg,
+Content ArgsManager::getContent(const Argument& arg,
 	const unsigned int argc, const unsigned int idx, const char* const argv[]) const
 {
 	const char* const nextParam = argv[idx + 1];
@@ -20,6 +18,26 @@ ArgContent ArgsManager::getContent(const Argument& arg,
 		throw InvalidArg(exceptionMessage);
 	}
 	return nextParam;
+}
+
+bool ArgsManager::checkExists(const Argument& argument)
+{
+	for (const auto& arg : requiredArgs) {
+		if (argument == arg)
+			return true;
+	}
+
+	for (const auto& arg : requiredArgSet) {
+		if (argument == arg)
+			return true;
+	}
+
+	for (const auto& arg : optionalArgs) {
+		if (argument == arg)
+			return true;
+	}
+
+	return false;
 }
 
 ArgsManager& ArgsManager::getInstance()
@@ -40,19 +58,25 @@ ArgsManager& ArgsManager::addHelp(const std::string& helpParam)
 
 ArgsManager& ArgsManager::addRequired(const Argument& requredArg)
 {
-	requiredArgs.insert(requredArg);
+	if (checkExists(requredArg))
+		throw std::runtime_error("This argument has already been added");
+	requiredArgs.push_back(requredArg);
 	return *this;
 }
 
-ArgsManager& ArgsManager::addOptional(const Argument& optionalParameter)
+ArgsManager& ArgsManager::addOptional(const Argument& optionalArg)
 {
-	this->optionalArgs.insert(optionalParameter);
+	if (checkExists(optionalArg))
+		throw std::runtime_error("This argument has already been added");
+	optionalArgs.push_back(optionalArg);
 	return *this;
 }
 
 ArgsManager& ArgsManager::addRequiredToSet(const Argument& arg)
 {
-	requiredArgSet.insert(arg);
+	if (checkExists(arg))
+		throw std::runtime_error("This argument has already been added");
+	requiredArgSet.push_back(arg);
 	return *this;
 }
 
@@ -61,18 +85,22 @@ void ArgsManager::clear()
 	requiredArgs.clear();
 	requiredArgSet.clear();
 	optionalArgs.clear();
+	argContentList.clear();
 }
 
 void ArgsManager::parse(const unsigned int argc, const char* const argv[], unsigned int beginIdx = 0)
 {
-	if (argc == 0 && (!requiredArgs.empty() || !requiredArgSet.empty()))
+	if (argc == 0 && (!requiredArgs.empty() || !requiredArgSet.empty())) {
 		throw InvalidArg("Does not pass a list of arguments.");
+	}
+
+	if (argc > 0) {
+		if (argv == nullptr)
+			throw std::invalid_argument("Pointer argv is NULL!");
+	}
 
 	if (beginIdx > argc)
 		throw std::invalid_argument("Start index out of bounds.");
-
-	if (argv == nullptr)
-		throw std::invalid_argument("Pointer argv is NULL!");
 
 	std::string exceptionMessage;
 	parsed = true;
@@ -89,16 +117,16 @@ void ArgsManager::parse(const unsigned int argc, const char* const argv[], unsig
 				if (paramStr == nullptr)
 					throw std::runtime_error("Argument " + std::to_string(idx + 1) + " is NULL");
 
-				if (requiredParam == paramStr) {
+				if (requiredParam == Argument(paramStr)) {
 					paramFound = true;
 
-					ArgContent parameterContent;
+					Content content;
 
 					if (requiredParam.hasContent())
-						parameterContent = getContent(requiredParam, argc, idx, argv);
+						content = getContent(requiredParam, argc, idx, argv);
 
 					// Fill
-					argContentMap.insert(std::pair<Argument, ArgContent>(requiredParam, parameterContent));
+					argContentList.push_back({ requiredParam, content });
 					break;
 				}
 			}
@@ -126,16 +154,16 @@ void ArgsManager::parse(const unsigned int argc, const char* const argv[], unsig
 				if (paramStr == nullptr)
 					throw std::runtime_error("Parameter " + std::to_string(idx + 1) + " is NULL");
 
-				if (requiredParam == paramStr) {
+				if (requiredParam == Argument(paramStr)) {
 					paramFound = true;
 
-					ArgContent parameterContent;
+					Content content;
 
 					if (requiredParam.hasContent())
-						parameterContent = getContent(requiredParam, argc, idx, argv);
+						content = getContent(requiredParam, argc, idx, argv);
 
 					// Fill
-					argContentMap.insert(std::pair<Argument, ArgContent>(requiredParam, parameterContent));
+					argContentList.push_back({ requiredParam, content });
 					break;
 				}
 			}
@@ -159,15 +187,15 @@ void ArgsManager::parse(const unsigned int argc, const char* const argv[], unsig
 				if (paramStr == nullptr)
 					throw std::runtime_error("Argument " + std::to_string(idx + 1) + " is NULL");
 
-				if (optionParam == paramStr) {
+				if (optionParam == Argument(paramStr)) {
 
-					ArgContent parameterContent;
+					Content content;
 
 					if (optionParam.hasContent())
-						parameterContent = getContent(optionParam, argc, idx, argv);
+						content = getContent(optionParam, argc, idx, argv);
 
 					// Fill
-					argContentMap.insert(std::pair<Argument, ArgContent>(optionParam, parameterContent));
+					argContentList.push_back({ optionParam, content });
 					break;
 				}
 			}
@@ -175,33 +203,37 @@ void ArgsManager::parse(const unsigned int argc, const char* const argv[], unsig
 	}
 }
 
-ArgContent ArgsManager::argValue(const Argument& param) const
+Content ArgsManager::argValue(const Argument& arg) const
 {
 	if (!parsed)
 		throw std::runtime_error("Parsing failed");
 
-	const auto& paramContentIter = argContentMap.find(param);
+	const ArgContent* argContent=nullptr;
+	for (const auto& it : argContentList) {
+		if (it.arg == arg)
+			argContent = &it;
+	}
 
 	std::string exceptionMessage;
-	const auto& p2 = param.getArg2();
+	const auto& p2 = arg.getArg2();
 
-	if (paramContentIter == argContentMap.end()) {
+	if (argContent == nullptr) {
 		exceptionMessage
 			.append("Parameter '")
-			.append(param.getArg1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
+			.append(arg.getArg1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
 			.append(" not found!");
 		throw InvalidArg(exceptionMessage);
 	}
 
-	if (!(*paramContentIter).first.hasContent()) {
+	if (!argContent->arg.hasContent()) {
 		exceptionMessage
 			.append("Parameter '")
-			.append(param.getArg1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
+			.append(arg.getArg1() + ((!p2.empty()) ? "' / '" + p2 + "'" : "'"))
 			.append(" has no content!");
 		throw std::runtime_error(exceptionMessage);
 	}
 
-	return (*paramContentIter).second;
+	return argContent->content;
 }
 
 bool ArgsManager::argPresent(const Argument& arg) const
@@ -209,7 +241,11 @@ bool ArgsManager::argPresent(const Argument& arg) const
 	if (!parsed)
 		throw std::runtime_error("Parsing failed");
 
-	return argContentMap.find(arg)!= argContentMap.end();
+	for (const auto& argItem : argContentList) {
+		if (argItem.arg == arg)
+			return true;
+	}
+	return false;
 }
 
 bool ArgsManager::isHelpArg(const unsigned int argc, const char* const argv[], unsigned int beginIdx) const

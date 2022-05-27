@@ -3,8 +3,7 @@
 #include <exception>
 
 /**
-	@brief
-	Class-exception.
+	@brief Exception class.
 */
 class InvalidArg: public std::exception
 {

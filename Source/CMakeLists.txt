@@ -1,7 +1,5 @@
 cmake_minimum_required (VERSION 3.15)
 
-#cmake_policy(SET CMP0091 NEW)
-
 project(ArgsManager)
 
 set(CMAKE_CXX_STANDART 17)
@@ -12,6 +10,9 @@ add_library(
 	
 	ArgsManager.h
 	ArgsManager.cpp
+
+	Argument.h
+	Argument.cpp
 	
 	InvalidArg.h
 )
